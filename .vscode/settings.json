@@ -1,0 +1,23 @@
+{
+  "editor.tokenColorCustomizations": {
+    "[Material Theme VARIANT]": {
+        "textMateRules": [
+            {
+                "scope": [
+                    "comment",
+                    "comment punctuation.definition.comment"
+                ],
+                "settings": {
+                    "foreground": "#FF0000"
+                }
+            }
+        ]
+    },
+    "comments": "#faf3e881"
+},
+"workbench.colorCustomizations": {
+	"[Material Theme VARIANT]": {
+		"sideBar.background": "#ff0000",
+	}
+},
+}
