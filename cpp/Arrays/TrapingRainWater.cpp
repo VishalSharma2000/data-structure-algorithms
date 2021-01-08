@@ -1,19 +1,15 @@
 // O(n^2) approach
-class Solution
-{
+class Solution {
 public:
-  int trap(vector<int> &height)
-  {
+  int trap(vector<int> &height) {
     int n = height.size();
     if (n == 0)
       return 0;
 
     int prevWater = 0;
     int water = 0;
-    while (1)
-    {
-      for (int i = 1; i < n - 1; i++)
-      {
+    while (1) {
+      for (int i = 1; i < n - 1; i++) {
         int j = i - 1, k = i + 1;
         for (; j >= 0; j--)
           if (height[j] > height[i])
