@@ -1,6 +1,11 @@
 /*
 if two strings are provided check if one string can be achieved from the other by rotation
+
+Best case => O(N1 + N2)
+Worst case => O((N1 + N2) * N2)
 */
+
+
 
 #include <iostream>
 #include <cstring>
@@ -20,8 +25,12 @@ bool check (string s1, string s2) {
     // if the first character matches find the substr and check if it same or not. 
       if(temp.substr(i, len2) == B) return true;
   }
-
   return false;
+
+  // using stl
+  if(temp.find(s2) == string::npos) return false;
+  return true;
+
 }
 
 int main() {
