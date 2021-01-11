@@ -1,6 +1,4 @@
 /*
-When we have to solve any question of array with recursion we should always start with the last index
-
 here we are comparing k with the last index value of array, if its same then return true otherwise 
 again call the function with one value less....
 
