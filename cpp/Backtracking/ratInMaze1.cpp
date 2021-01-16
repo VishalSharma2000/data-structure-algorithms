@@ -1,5 +1,8 @@
 /*
 Main idea : BFS
+
+Time complexity  O(3 ^ (n^2))
+Space complexity  O(3 ^ (n^2))
 */
 
 #include <bits/stdc++.h>
