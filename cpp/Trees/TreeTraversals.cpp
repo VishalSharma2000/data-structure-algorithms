@@ -33,14 +33,62 @@ void inOrder(Tree *root) {
   }
 }
 
-int main() {
-  Tree *head = new Tree(10);
-  head->left = new Tree(20);
-  head->right = new Tree(30);
-  head->left->left = new Tree(40);
-  head->left->right = new Tree(50);
-  head->right->right = new Tree(60);
-  head->right->right->right = new Tree(70);
+void preOrder(Tree *root) {
+  stack<Tree*> s;
 
-  inOrder(head);
+  Tree *curr = root;
+
+  while(!s.empty() || curr) {
+    if(curr) {
+      cout << curr->data << " ";
+
+      s.push(curr);
+      curr = curr->left;
+    } else {
+      curr = s.top();
+      s.pop();
+
+      curr = curr->right;
+    }
+  }
+}
+
+void postOrder(Tree *root) {
+  stack<Tree*> s;
+
+  Tree *curr = root;
+
+  while(!s.empty() || curr) {
+    if(curr) {
+      s.push(curr);
+      if(curr->right) s.push(curr->right);
+      curr = curr->left;
+    } else {
+      curr = s.top();
+      s.pop();
+      cout << curr->data << " ";
+
+      // if(curr->right) {
+      //   s.push(curr);
+      // }
+        curr = curr->right;
+    }
+  }
+}
+
+int main() {
+	Tree* root = new Tree(1);
+	root->left = new Tree(2);
+	root->right = new Tree(3);
+	root->left->left = new Tree(4);
+	root->right->left = new Tree(5);
+	root->right->right = new Tree(6);
+	root->right->left->left = new Tree(7);
+	root->right->left->right = new Tree(8);
+
+  inOrder(root);
+  cout << endl;
+  preOrder(root);
+  cout << endl;
+  postOrder(root);
 }

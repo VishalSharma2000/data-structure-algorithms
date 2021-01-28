@@ -12,7 +12,8 @@ vector<int> leftView(Node *root)
             Node *temp = q.front();
             q.pop();
             
-            if(i == 0) ans.push_back(temp->data);
+            if(i == 0) ans.push_back(temp->data);  // for priting the left view
+            if(i == size-1) ans.push_back(temp->dat) // for priting the right view
             if(temp->left) q.push(temp->left);
             if(temp->right) q.push(temp->right);
         }
