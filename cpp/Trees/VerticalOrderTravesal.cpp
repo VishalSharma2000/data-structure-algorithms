@@ -1,4 +1,3 @@
-public:
     void findMinMaxDist(TreeNode *root, int dist, int *minDist, int *maxDist) {
         if(root == NULL) return;
         
