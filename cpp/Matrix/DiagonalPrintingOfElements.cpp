@@ -8,9 +8,17 @@ public:
         
         vector<int> ans;
         int x = -1, y = 0;
+        /*
+        The sum of indexes of diagonal elements are equal.
+        If we have n x n matrix then their will be no need to if condition inside the
+        while loop...
+        But with m x n matrix...some indexes may go out of bound.
+        */
+        
+        
         for(int i=0; i<(m+n-1); i++) {
             if(i%2 == 0) {
-                x++;
+                x++;        // incrementing for next diagonal, from down to up
                 int sum = x + y;
                 
                 while(x >=0 && y < n && (x + y) == sum) {
@@ -20,6 +28,8 @@ public:
                     x--;
                     y++;
                 }
+                // returning to old value from out of bound value arrived 
+                // inside while loop
                 x++;
                 y--;
             } else {
