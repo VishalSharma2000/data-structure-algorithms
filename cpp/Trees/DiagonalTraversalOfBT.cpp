@@ -21,19 +21,21 @@ vector<int> diagonal(Node *root)
             q.pop();
             
             while(temp) {
-                q.push(temp);
+               ans.push_back(temp->data);
+               if(temp->left) q.push(temp->left); 
+               
                 temp = temp->right;
             }
         }
         
-        size = q.size();
-        while(size--) {
-            Node *temp = q.front();
-            q.pop();
+//         size = q.size();
+//         while(size--) {
+//             Node *temp = q.front();
+//             q.pop();
             
-            if(temp->left) q.push(temp->left);
-            ans.push_back(temp->data);
-        }
+//             if(temp->left) q.push(temp->left);
+//             ans.push_back(temp->data);
+//         }
    }
    
    return ans;
