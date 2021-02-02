@@ -34,8 +34,9 @@ public:
         bool rightB = checkBalance(root->right, &rightH);
         
         *height = 1 + max(leftH, rightH); // helps in finding height
-        if(abs(leftH-rightH) > 1) return false;
-        return leftB && rightB;
+//         if(abs(leftH-rightH) > 1) return false;
+        return leftB && rightB && (abs(leftH-rightH) <= 1);
+     // left subtree, right subtree should be balanced and height difference between the left subtree and right subtree should be less than or equal to 1.
     }
     
     
