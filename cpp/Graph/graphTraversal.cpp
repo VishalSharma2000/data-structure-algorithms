@@ -52,6 +52,26 @@ class Graph {
             
         }
     }
+    
+    void DFSUtil(int node, bool visited[]) {
+        // mart the current node as visited
+        visited[node] = true;
+        cout << node << " ";
+        
+        // recursively call its neighbour
+        for(auto u : adj[node]) {
+          // if the neighbour is not visited, then recursively call the function for it, else continue with other neighbour
+            if(visited[u] == false)
+                DFSUtil(u, visited);
+        }
+    }
+    
+    void DFS(int node) {
+        bool *visited = new bool[V];
+        for(int i=0; i<V; i++) visited[i] = false;
+        
+        DFSUtil(node, visited);
+    }
 };
 
 int main() {
@@ -66,5 +86,6 @@ int main() {
     }
     
     G.printGraph();
-    G.BFS(0);
+    G.BFS(0); cout << endl;
+    G.DFS(0);
 }
