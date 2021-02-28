@@ -38,3 +38,29 @@ public:
         return ans;
     }
 };
+
+
+// Refracted Code
+class Solution {
+public:
+    vector<vector<int>> intervalIntersection(vector<vector<int>>& firstList, vector<vector<int>>& secondList) {
+        int n = firstList.size(); 
+        int m = secondList.size();
+        vector<vector<int> > ans;
+        
+        int i = 0, j = 0;
+        
+        while(i < n && j < m) {
+            if(firstList[i][1] >= secondList[j][0] and firstList[i][0] <= secondList[j][1]) {
+                int low = max(firstList[i][0], secondList[j][0]);
+                int high = min(firstList[i][1], secondList[j][1]);
+                
+                ans.push_back({low, high});
+            }
+            
+            firstList[i][1] < secondList[j][1] ? i++ : j++;
+        }
+        
+        return ans;
+    }
+};
