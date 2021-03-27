@@ -1,3 +1,7 @@
+/*
+Time Complexity: O(N^2)
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -30,13 +34,30 @@ void printMST(vector<vector<int>> &adjMat) {
         int nextMinCostVertex = findNextMinCostVertex(costToReachVertex, includedVertex, v);
 
         includedVertex[nextMinCostVertex] = true;
-
+        
+        // if the graph is implemented using adjacency matrix, then use the below for loop
         for(int i=0; i<v; i++) {
             if(adjMat[nextMinCostVertex][i] != 0 && !includedVertex[i] && adjMat[nextMinCostVertex][i] < costToReachVertex[i]) {
                 parent[i] = nextMinCostVertex;
                 costToReachVertex[i] = adjMat[nextMinCostVertex][i];
             }
         }
+        
+        // if the graph is implemeneted using adjacency list, then use the below loop
+        for(Vertex u : adj[nextMinCostVertex]) {
+            // basically we are updating the reachability cost of the vertices which can be reached from the vertex (nextMinCostVertex)
+            // this is also called relaxation
+            // Vertex is a class object with following public values => dest (to store the vertex name), weight (to store the cost to reach the vertex from neighbour)
+            
+            if(u.weight < costToReachVertex[u.dest]) {
+                costToReachVertext[u.dest] = u.weight;
+                parent[u.dest] = nextMinCostVertex;
+            }
+        }
+        
+        /*
+        Note: Both the for loop are performing the same operation, both are only differing in the way of traversing or reaching their neigbours
+        */
     }
 
     for(int i=1; i<v; i++) {
