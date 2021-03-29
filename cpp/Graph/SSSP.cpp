@@ -66,3 +66,33 @@ int main() {
 
     SSSP(adj, v, 0);
 }
+
+/*
+Test Input:
+8 8
+0 1
+1 2
+2 3
+3 4
+4 5
+5 6
+6 7
+7 0
+0->1 
+1->2 
+2->3 
+3->4 
+4->5 
+5->6 
+6->7 
+7->0 
+All Shortest Path are: 
+Path from 0 to 0: 0 
+Path from 0 to 1: 0 1 
+Path from 0 to 2: 0 1 2 
+Path from 0 to 3: 0 1 2 3 
+Path from 0 to 4: 0 1 2 3 4 
+Path from 0 to 5: 0 1 2 3 4 5 
+Path from 0 to 6: 0 1 2 3 4 5 6 
+Path from 0 to 7: 0 1 2 3 4 5 6 7
+*/
