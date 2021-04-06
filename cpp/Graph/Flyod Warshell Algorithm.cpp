@@ -6,8 +6,8 @@ void floydWarshell(vector<vector<int>> &adjMat, int V) {
     vector<vector<int>> path(V, vector<int>(V, -1));
     
     // initialize the distance between vertex i to i as zero
-    for(int i=0, j=0; i<V && j<V; i++, j++) distance[i][j] = 0, parent[i][j] = i;
-    
+    for(int i=0; i<V; i++) distance[i][i] = 0;
+
     for(int k=0; k<V; k++) {
         /*
             k is used for via vertex....
