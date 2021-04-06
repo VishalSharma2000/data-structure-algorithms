@@ -31,6 +31,13 @@ void floydWarshell(vector<vector<int>> &adjMat, int V) {
     }
     
     for(int i=0; i<V; i++) {
+        if(distance[i][i] < 0) {
+            cout << "Negative edge cycle exist in the graph";
+            return;
+        }
+    }
+
+    for(int i=0; i<V; i++) {
         for(int j=0; j<V; j++) {
             if(distance[i][j] == INT_MAX) cout << " - ";
             else cout << " " << distance[i][j] << " ";
