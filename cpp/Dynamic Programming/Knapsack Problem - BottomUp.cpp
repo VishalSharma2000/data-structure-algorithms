@@ -14,7 +14,6 @@ int knapsackBottomUp(int weights[], int profit[], int W, int n) {
 
 	/*
 		Think it like this...initially you don't have any object with you to add into knapsack neither you have any space in knapsack
-
 		DP[n1-1][w1 - weights[n1]] => states that if we are going to add the object with index n1 into the existing object list, so we
 		will have to decrease the knapsack remaining space by weights[i] and then with the remaining space we will check which one is giving 
 		more profit.
