@@ -3,6 +3,10 @@
     Give the set of coins and an amount, we have to find the minimum number of coins needed to make the change of the
     given amount
 
+    Comparision with Count Subset Sub Problem:
+    The only difference between CSSP and CCP is that in the former we can choose one particular element only once while in the later we can choose
+    the elements any number of times. 
+
     ex: coins[] = [1, 2, 3]
     amount = 5
     So, ans => 2 + 3, 2 coins will be needed to make amount 5
@@ -21,7 +25,7 @@ int coinChange(vector<int>& coins, int amount) {
         the value by which it is initialized will matter
     */
     int dp[amount+1];
-    for(int i=0; i<amount+1; i++) dp[i] = INT_MAX-1;
+    for(int i=1; i<amount+1; i++) dp[i] = INT_MAX-1;
     dp[0] = 0;
     
     /*
