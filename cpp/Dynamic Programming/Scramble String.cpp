@@ -25,6 +25,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+unordered_map<string, bool> dp;
+
 bool isScramble(string s1, string s2) {
   int len1 = s1.length();
   int len2 = s2.length();
@@ -54,9 +56,45 @@ bool isScramble(string s1, string s2) {
   return false;
 }
 
+bool isScrambleM(string s1, string s2) {
+  int len1 = s1.length();
+  int len2 = s2.length();
+
+  if(len1 != len2) return false;
+  /* Swapping cannot result into an increase or decrease of the length of the given strings */
+  if(len1 == 0 || len2 == 0) return false;
+  /* As per the defination, either of the strings should not be empty */
+  
+  string key = s1 + " " + s2;
+  if(dp.find(key) != dp.end()) return dp[key];
+  
+  if(s1.compare(s2) == 0) return dp[key] = true;
+  /* If both the strings are same, then also they are scrambled */
+  if(len1 == 1) return dp[key] = false;
+  /* We have already checked that the string is of equal length, and none of them is empty, and even they are not equal
+     so if they are of length one then no definately they are not equal  */
+
+  for(int i=1; i<len1; i++) {
+    /* If swapping wouldn't have happened */
+    /* Then the first i characters of string s1 should be same to first i characters of string s2, same thing should hold for remaing n-i characters  */
+    bool nonSwapCond = isScramble(s1.substr(0, i), s2.substr(0, i)) && isScramble(s1.substr(i), s2.substr(i));
+
+    /* If swapping would have happened */
+    /* Then the first i characters should be same as last i characters,  */
+    bool swapCond = isScramble(s1.substr(0, i), s2.substr(len1-i)) && isScramble(s1.substr(i), s2.substr(0, len1-i));
+
+    if(nonSwapCond || swapCond) return dp[key] = true;
+  }
+
+  return dp[key] = false;
+}
+
 int main () {
   string s1, s2;
   cin >> s1 >> s2;
 
   cout << isScramble(s1, s2) << endl;
+
+  dp.clear();
+  cout << isScrambleM(s1, s2) << endl;
 }
