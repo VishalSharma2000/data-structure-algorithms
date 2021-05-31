@@ -1,3 +1,4 @@
+/* Below solution is done with taking the reference of dp on trees general syntax but this question can be done in more simple way  */
 int solve(TreeNode *root, int &res) {
         /* Base Condition */
         if(!root) return 0;
@@ -26,6 +27,18 @@ int solve(TreeNode *root, int &res) {
         return temp;
     }
     
+int solve2(TreeNode *root, int &res) {
+        if(root == null)
+                return 0;
+        
+        int leftHeight = solve2(root->left, res);
+        int rightHeight = solve2(root->right, res);
+        
+        res = max(res, leftHeight + rightHeight);
+        
+        return max(left, right) + 1; // returning the height
+}
+
     int diameterOfBinaryTree(TreeNode* root) {
         int res = INT_MIN;
         solve(root, res);
