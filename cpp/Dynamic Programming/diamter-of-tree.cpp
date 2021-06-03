@@ -18,6 +18,14 @@ int solve(TreeNode *root, int &res) {
         Note that we used to add another base condition like if(!root->left && !root->right) return 0; if the measurement is done based on the edge and not on the
         node. But here it is not working because in that case we treat the null value and the leaf node at the same height. */
         int temp = max(left, right) + 1;  // height of the current node
+  
+        /* 
+           As per the syntax, the below line should be => ans = max(temp, left + right) but this is not working properly here because
+           Daimeter of the tree is defined on the basis of edges not the nodes, and second reason is if diamter is considered from leaf to leaf.
+           Since, temp only calculates the maximum height, so it will be either of the left sub tree of right sub tree whose one part will be leaf node but not 
+           the other.
+        */
+        
         int ans = left + right;           // keep track of the maximum diameter obtained so far
   
         /* Keeping track of the final answer */
