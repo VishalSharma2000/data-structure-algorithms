@@ -17,8 +17,8 @@ int solve(TreeNode *root, int &res) {
         /* 1 is added for the edge which is connection the left or the right sub tree with the current node
         Note that we used to add another base condition like if(!root->left && !root->right) return 0; if the measurement is done based on the edge and not on the
         node. But here it is not working because in that case we treat the null value and the leaf node at the same height. */
-        int temp = max(left, right) + 1;
-        int ans = left + right;
+        int temp = max(left, right) + 1;  // height of the current node
+        int ans = left + right;           // keep track of the maximum diameter obtained so far
   
         /* Keeping track of the final answer */
         res = max(res, ans);
@@ -33,6 +33,18 @@ int solve2(TreeNode *root, int &res) {
         
         int leftHeight = solve2(root->left, res);
         int rightHeight = solve2(root->right, res);
+        
+        /* If we see closely, we are basically finding the daimeter(longest path) at each node and keep tracking of the maximum diamter obtained so far. 
+           We are returning the Height of the tree so far because we are keeping track of the height of the tree simultanously, rather than finding it again and again.
+           
+           What I mean is: Think of the brute force approach...for each node we will find the height of the left sub tree and height of the right sub tree and then find
+           the diameter at that node by adding both of them...so for each node we have to perform getHeight() function which is O(n) so total time complexity
+           would rise to O(n^2). So, to avoid to recurring calculation of the height at each node we are keeping track of the height of the current node by returning it.
+           
+           and the above dp solution is another way of writing the code, wherein we are finding a temporary solution which other ancestor will use to find the answer
+           and a answer using the current node...so answer will be use to keep track of the global or main final answer i.e. keeping track of the maximum diamter
+           obtained so far and returning the temporary solution (which is height of the node here) so that other nodes can use it.
+        */
         
         res = max(res, leftHeight + rightHeight);
         
