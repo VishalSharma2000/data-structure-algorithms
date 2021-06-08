@@ -11,30 +11,29 @@
  */
 class Solution {
 public:
-    int k = 0;
-    
-    TreeNode* getInorder(vector<int> &preorder, int start, int end, vector<int> &inorder) {
-        if(start > end) return NULL;
+    /* 
+        In preorder traversal, first all the nodes is from left subtree including the node and then all the nodes of the right subtree appreas
+        Hence, so for that reason we need to make a global variable to keep track of which index is completed 
+     */
+    int preIn = 0;
+    TreeNode* util(vector<int> &preorder, vector<int> &inorder, int inStart, int inEnd) {
+        if(inStart > inEnd) return NULL;
         
-        int rootIndex = -1;
+        TreeNode *head = new TreeNode(preorder[preIn++]);
         
-        for(int i=start; i<=end; i++) 
-            if(preorder[k] == inorder[i]) {
-                rootIndex = i;
+        int in = 0;
+        for(in = inStart; in<=inEnd; in++) 
+            if(inorder[in] == head->val)
                 break;
-            }
         
-        TreeNode *root = new TreeNode(preorder[k]);
-        k++;
+        head->left = util(preorder, inorder, inStart, in-1);
+        head->right = util(preorder, inorder, in+1, inEnd);
         
-        root->left = getInorder(preorder, start, rootIndex-1, inorder);
-    
-        root->right = getInorder(preorder, rootIndex+1, end, inorder);
-        
-        return root;
+        return head;
     }
     
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-        return getInorder(preorder, 0, inorder.size()-1, inorder);
+        
+        return util(preorder, inorder, 0, inorder.size()-1);
     }
 };
