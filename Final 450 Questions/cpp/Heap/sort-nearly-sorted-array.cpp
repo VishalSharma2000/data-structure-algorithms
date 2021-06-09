@@ -32,7 +32,7 @@ vector<int> sortKSortedArray(vector<int> arr, int k) {
   So, till the size of heap is less than or equal to k, push all the elements
   Then after traversing from k+1 element, pop the top element (this will be the value of the 0th index) and push the k+1 element
 
-  Time Complexity: O((k)log(n))
+  Time Complexity: O(nlog(k))
   Space Complexity: O(1) if you change the original array
    */
 
