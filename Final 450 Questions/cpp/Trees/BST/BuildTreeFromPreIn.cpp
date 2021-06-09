@@ -17,6 +17,7 @@ public:
      */
     int preIn = 0;
     TreeNode* util(vector<int> &preorder, vector<int> &inorder, int inStart, int inEnd) {
+        /* This condition triggers when the node has no children */
         if(inStart > inEnd) return NULL;
         
         TreeNode *head = new TreeNode(preorder[preIn++]);
