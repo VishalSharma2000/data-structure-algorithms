@@ -10,7 +10,7 @@ bool subsetSumPossible(int arr[], int n, int sum) {
 
     Initialization:
       1st Column will be all true: bcoz to get a sum of zero we can have an empty set...so if are not provided with any value
-      in the set then also we can have a sum equal zero.
+      in the array then also we can have a subset(empty set) with sum equal zero.
       1st Row (i = 1 to sum) will be false: bcoz if we are not provided with any number in the array then we can't have any 
       sum more than 0
   */
@@ -21,6 +21,10 @@ bool subsetSumPossible(int arr[], int n, int sum) {
     for(int n1=1; n1<n+1; n1++) {
       for(int sum1=1; sum1<sum+1; sum1++) {
         if(arr[n1-1] <= sum1) {
+          /* If the element value at array index n1-1 is less than sum1 then we have two options. We can either included it into
+          our subset or don't include. 
+          If we are gonna include then the new sum required will be lastSum - currValue
+          This is a subproblem   */
           DP[n1][sum1] = DP[n1-1][sum - sum1] || DP[n1-1][sum1];
         } else {
           DP[n1][sum1] = DP[n1-1][sum1];
@@ -56,4 +60,5 @@ int main() {
   cin >> sum;
 
   cout << subsetSumPossible(arr, n, sum) << endl;
+  cout << subsetSumPbmRecursive(arr, n, sum, 0) << endl;
 }
