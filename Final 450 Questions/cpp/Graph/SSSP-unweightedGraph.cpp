@@ -1,7 +1,8 @@
+/* Find single source shortest path (SSSP) for unweighted graph */
 #include <bits/stdc++.h>
 using namespace std;
 
-
+/* Maintain a visited array, but this works here only bcoz we are doing bfs on an unweighted graph */
 void SSSP(vector<int> adj[], int V, int src) {
     vector<bool> visited(V, false);
     vector<int> parent(V);
@@ -41,6 +42,32 @@ void SSSP(vector<int> adj[], int V, int src) {
         cout << "Path from 0 to " << i << ": ";
         for(int m=path.size()-1; m>=0; m--) cout << path[m] << " ";
         cout << endl;
+    }
+}
+
+/* If we don't maintain a visited array, hence checking all the paths */
+void SSSP(vector<int> adj[], int V, int src) {
+    vector<int> parent(V);          // to print the path
+    vector<int> distance(V, INT_MAX);     // to store the minimum distance
+
+    /* Intially no one is parent */
+    for(int i=0; i<V; i++) parent[i] = -1;
+
+    queue<int> q;
+    distance[src] = 0;
+
+    q.push(src);
+    while(!q.empty()) {
+        int u = q.front();
+        q.pop();
+            
+        for(int v : adj[u]) {
+            if(distance[u] + 1 < distance[v]) {
+                distance[v] = distance[u] + 1;
+                parent[v] = u;
+                q.push(v);
+            }
+        }
     }
 }
 
