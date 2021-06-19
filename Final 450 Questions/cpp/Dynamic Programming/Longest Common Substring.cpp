@@ -18,13 +18,28 @@ int LCSubstringDP(string s1, string s2, int n, int m) {
 
   for(int i=1; i<n+1; i++) 
     for(int j=1; j<m+1; j++) {
+      /* Here at dp[i][j] we are not storing longest common substring. we are just maintaining the continuiting of the string. 
+      If the character at s1[i] and s2[j] is same then check if the characters i.e. at i-1 and j-1 are same. If they are then add 1 otherwise make it 0 bcoz continuity breaked here */
       if(s1[i-1] == s2[j-1]) dp[i][j] = 1 + dp[i-1][j-1];
       else dp[i][j] = 0;
 
+      /* Since, dp[i][j] is just storing the continuity of the string we will have to keep track of the maximum substring so far */
       maxLen = max(maxLen, dp[i][j]);
     }
 
   return maxLen;
+} 
+
+int longestCommonSubstringRecursion(string s1, string s2, int i, int j, int maxLen) {
+  if(i == 0 || j == 0) return maxLen;
+
+  if(s1[i] == s2[j]) {
+    count = longestCommonSubstringRecursion(s1, s2, i-1, j-1, maxLen+1);
+  }
+
+  count = max(count, max(longestCommonSubstringRecursion(s1, s2, i-1, j, 0), longestCommonSubstringRecursion(s1, s2, i, j-1, 0)));
+
+  return count;
 }
 
 int main() {
