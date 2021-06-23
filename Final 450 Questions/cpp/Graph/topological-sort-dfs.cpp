@@ -10,11 +10,12 @@ void getTopologicalSortUtil(vector<int> adj[], int node, vector<bool> &visited, 
       getTopologicalSortUtil(adj, v, visited, topo);
   }
 
+  /* Once the dfs traveral for the current node is completed means all the nodes which were after this node has been added into topological sort. now add this node value too  */
   topo.push(node);
 }
 
 vector<int> getTopologicalSort(vector<int> adj[], int V) {
-  stack<int> topo;
+  stack<int> topo;          /* Since we will get the topological sorted elements in opposite order */
   vector<bool> visited(V+1, false);
 
   /* Doing for all components */

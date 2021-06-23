@@ -1,4 +1,14 @@
-// BFS Traversal of the graph
+#include <bits/stdc++.h>
+using namespace std;
+
+/* 
+    Adjacency List => O(N + 2*E)
+    1 -> lists of adjacent
+    2 -> lists of adjacent
+
+    when we do sum of all list of adjacenet => 2 * E
+ */
+
 class Graph {
   public:
     int V;
@@ -72,6 +82,23 @@ class Graph {
         
         DFSUtil(node, visited);
     }
+
+
+    /* Print all the connected components of the graph */
+    void printAllConnectedComponents() {
+        bool visited[V];
+        memset(visited, false, sizeof(visited));
+
+        /* The below for-loop and if-loop structure says if the component starting with index i is not visited
+        then visit the component */
+        for(int i=0; i<V; i++) {
+            if(!visited[i]) {
+                DFSUtil(i, visited);
+                cout << endl;
+            }
+        }
+    }
+
 };
 
 int main() {
@@ -88,4 +115,6 @@ int main() {
     G.printGraph();
     G.BFS(0); cout << endl;
     G.DFS(0);
+
+    G.printAllConnectedComponents();
 }

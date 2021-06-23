@@ -42,6 +42,20 @@ bool bipartiteDFS(vector<int> adj[], int node, int nodeClr, vector<int> &color) 
   return true;
 }
 
+/* Another way of writing the function */
+bool bipartiteDFS(vector<int> adj[], int node, vector<int> &color) {
+  if(color[node] == -1) color[node] = 1;
+
+  for(int v : adj[node]) {
+    if(color[v] == -1) {
+      color[v] = 1 - color[node];
+      if(!bipartiteDFS(adj, v, color)) return false;
+    } else if(color[v] == color[node]) return false;
+  }
+
+  return true;
+}
+
 bool isBipartite(vector<int> adj[], int V) {
   vector<int> color(V+1, -1);
 

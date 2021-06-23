@@ -21,7 +21,7 @@ int closestVertex(vector<int> distance, vector<int> inlcudedVertex) {
     }
   }
 
-  return minCost;
+  return minIndex;
 }
 
 void dijkstra(vector<Edge> adj[], int V) {
