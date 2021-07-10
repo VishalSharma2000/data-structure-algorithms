@@ -1,4 +1,8 @@
-/* Print all the connected components of the graph */
+/* Connected Graph: A graph is said to be connected graph when there is path to reach every vertex from every other vertex */
+/* Print all the connected components of the graph in undirected graph */
+/* Normal BFS and DFS will only work when the graph is undirected because if there is an edge between u and v
+then we can traverse from u to v and v to u. But if the graph is directed doing this would need two edges. In
+directed graph we usually find strongly connected subgraph using kosajaru or tarjan algorithm to find strongly connected components */
 #include <bits/stdc++.h>
 using namespace std;
 
