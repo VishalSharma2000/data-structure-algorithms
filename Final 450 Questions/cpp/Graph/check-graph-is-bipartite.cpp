@@ -30,6 +30,23 @@ bool bipartiteBFS(vector<int> adj[], int node, vector<int> &color) {
   return true;
 }
 
+bool bipartiteDFS(vector<int> adj[], int node, vector<int> &color) {
+  /* If the node is not yet colored then give color to the node */
+  if(color[node] == -1) color[node] = 1;
+
+  /* For all adjacent nodes */
+  for(int v : adj[node]) {
+    if(color[v] == -1) {
+      /* If adjacent node is not yet colored, color it and then call again for adjacent nodes */
+      color[v] = 1 - color[node];
+      if(!bipartiteDFS(adj, v, color)) return false;
+    } else if(color[v] == color[node]) return false;
+  }
+
+  return true;
+}
+
+/* Another way of writing the function */
 bool bipartiteDFS(vector<int> adj[], int node, int nodeClr, vector<int> &color) {
   color[node] = nodeClr;
 
@@ -42,19 +59,6 @@ bool bipartiteDFS(vector<int> adj[], int node, int nodeClr, vector<int> &color) 
   return true;
 }
 
-/* Another way of writing the function */
-bool bipartiteDFS(vector<int> adj[], int node, vector<int> &color) {
-  if(color[node] == -1) color[node] = 1;
-
-  for(int v : adj[node]) {
-    if(color[v] == -1) {
-      color[v] = 1 - color[node];
-      if(!bipartiteDFS(adj, v, color)) return false;
-    } else if(color[v] == color[node]) return false;
-  }
-
-  return true;
-}
 
 bool isBipartite(vector<int> adj[], int V) {
   vector<int> color(V+1, -1);
@@ -64,7 +68,7 @@ bool isBipartite(vector<int> adj[], int V) {
   for(int i=1; i<=V; i++) {
     if(color[i] == -1) {
       if(!bipartiteBFS(adj, i, color)) return false;
-      // if(!bipartiteDFS(adj, i, 0, color)) return false;
+      // if(!bipartiteDFS(adj, i, color)) return false;
     }
   }
 
