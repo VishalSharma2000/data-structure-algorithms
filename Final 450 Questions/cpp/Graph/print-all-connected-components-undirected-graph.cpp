@@ -3,6 +3,17 @@
 /* Normal BFS and DFS will only work when the graph is undirected because if there is an edge between u and v
 then we can traverse from u to v and v to u. But if the graph is directed doing this would need two edges. In
 directed graph we usually find strongly connected subgraph using kosajaru or tarjan algorithm to find strongly connected components */
+
+/* Example:
+  0 --- 1 --- 2 => undirected and connected graph bcoz we can reach every node from every other node
+  so doing normal bfs and dfs would work properly
+
+  0 ---> 1 ---> 2 => directed but not connected graph bcoz we can't reach from every node to every other node
+  so doing normal dfs and bfs will give the graph is connected bcoz all the nodes will be visited in one dfs and one bfs 
+  traversal but it's actually not connected. So, here we can find strongly connected components using kosajaru and tarjan 
+  algorithms
+ */
+
 #include <bits/stdc++.h>
 using namespace std;
 
