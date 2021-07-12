@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/* One small difference in bfs and dfs is...when we do dfs we make the node visited when we reach at that node but in
+bfs we make the node x visited when we are at its adjacent node */
 /* 
     Adjacency List => O(N + 2*E)
     1 -> lists of adjacent
