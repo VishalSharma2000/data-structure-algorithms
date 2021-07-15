@@ -2,6 +2,10 @@
   Graph is bipartite or not can be checked with the help of both the traversal. 
   BFS and DFS
   A graph is called bipartite only if it can be colored using exactly two colors. 
+
+  If graph does not have any cycle then the graph is bipartite graph
+  If the graph has a cycle then the graph with even length cycle will be bipartitite and the graph
+  with odd length cycle will not be bipartite
 */
 
 #include <bits/stdc++.h>
