@@ -13,17 +13,17 @@
 
 ## Operations on vector
 
-| Need                                                                                                       | Syntax                   |
-| ---------------------------------------------------------------------------------------------------------- | ------------------------ |
-| Push Element                                                                                               | `vec1.push_back(val)`    |
-| Push Element (Takes Less Time)                                                                             | `vec1.emplace_back(val)` |
-| Pop Element from back                                                                                      | `vec1.pop_back(val)`     |
-| Clear the vector                                                                                           | `vec1.clear()`           |
-| Size of Vector                                                                                             | `vec1.size()`            |
-| Resize Vector to any size (Keep care of data loss if you resize to a size which is less than current size) | `vec1.resize(size)`      |
-
-| Fill or Update value to a range of index in vector (You can update from any index to any index)
-| `fill(vec1.begin(), vec1.end(), val)` |
+| Need                                                                                                                                                                     | Syntax                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------- |
+| Push Element                                                                                                                                                             | `vec1.push_back(val)`                                 |
+| Push Element (Takes Less Time)                                                                                                                                           | `vec1.emplace_back(val)`                              |
+| Pop Element from back                                                                                                                                                    | `vec1.pop_back(val)`                                  |
+| Clear the vector                                                                                                                                                         | `vec1.clear()`                                        |
+| Size of Vector                                                                                                                                                           | `vec1.size()`                                         |
+| Resize Vector to any size (Keep care of data loss if you resize to a size which is less than current size)                                                               | `vec1.resize(size)`                                   |
+| Fill or Update value to a range of index in vector (You can update from any index to any index)                                                                          | `fill(vec1.begin(), vec1.end(), val)`                 |
+| Fill or update (Using staring iterator and number of elements to update or fill)                                                                                         | `fill_n(vec1.begin(), no_of_elemets, 5)`              |
+| Copy one vector (vec2) into another vector (vec1) - \n (This can be used after you have already declared the vector - Here we are copying all elements of vec2 into vec1 | `copy(vec2.begin(), vec2.end(), back_inserter(vec1))` |
 
 ## Accessing Elements
 
