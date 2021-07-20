@@ -1,15 +1,20 @@
 /* Find single source shortest path (SSSP) for unweighted graph */
+
+/* Whenever we use BFS in an unweighted graph or grid, we will always get a shortest distance from src to all other nodes.
+So, if we are maintaining a visited array then while traversing over the adjacent node, if the node is visited that means the shortest
+distance for that node is already been calculated. Hence, no need to check the distance.
+
+On the other hand, where if we are not maintaining a visited array then we are basically using the logic of dijsktra algorithm i.e 
+relaxation. If the current distance + weight(here unit weight) is less than previous distance then update otherwise don't update */
 #include <bits/stdc++.h>
 using namespace std;
 
-/* Maintain a visited array, but this works here only bcoz we are doing bfs on an unweighted graph */
+/* Maintain a visited array */
 void SSSP(vector<int> adj[], int V, int src) {
     vector<bool> visited(V, false);
-    vector<int> parent(V);
+    vector<int> parent(V, -1);
     vector<int> distance(V, 0);
     queue<int> q;
-    
-    for(int i=0; i<V; i++) parent[i] = -1;
     
     q.push(src);
     visited[src] = true;
@@ -45,17 +50,14 @@ void SSSP(vector<int> adj[], int V, int src) {
     }
 }
 
-/* If we don't maintain a visited array, hence checking all the paths */
+/* Without visited array */
 void SSSP(vector<int> adj[], int V, int src) {
-    vector<int> parent(V);          // to print the path
+    vector<int> parent(V, -1);          // to print the path
     vector<int> distance(V, INT_MAX);     // to store the minimum distance
 
-    /* Intially no one is parent */
-    for(int i=0; i<V; i++) parent[i] = -1;
-
     queue<int> q;
-    distance[src] = 0;
 
+    distance[src] = 0;
     q.push(src);
     while(!q.empty()) {
         int u = q.front();
