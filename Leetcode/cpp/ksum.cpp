@@ -1,3 +1,6 @@
+/* Leetcode Question: https://leetcode.com/problems/4sum/ */
+
+/* TC: O(n^(k-1)), SC: O(n) */
 class Solution {
 public:
     vector<vector<int>> twoSum(vector<int> &nums, int start, int target) {
@@ -15,11 +18,33 @@ public:
             decrement end to get lesser values or to avoid duplicate quadruplets */
             else if(sum > target || (high+1 < n && nums[high+1] == nums[high])) high--;
             else res.push_back({nums[low++], nums[high--]});
+
+            /* If we have duplicate pairs which sum to target, then those duplicates will also be avoided with the 2nd 
+            condition of sum<target and sum>target if conditions */
         }
         
         return res;
     }
-    
+
+    /* Another Way to implement two sum logic - using hash set */
+    /*
+    vector<vector<int>> twoSum(vector<int> &nums, int start, int target) {
+        unordered_set<int> s;
+        vector<vector<int>> res;
+        
+        for(int i=start; i<nums.size(); i++) {
+            if(res.empty() || (res.back()[1] != nums[i])) {
+                if(s.find(target - nums[i]) != s.end())
+                    res.push_back({ target-nums[i], nums[i] });
+                
+                s.insert(nums[i]);
+            }
+        }
+        
+        return res;
+    }
+    */
+
     vector<vector<int>> kSum(vector<int> &nums, int k, int start, int target) {
         int n = nums.size();
         vector<vector<int>> res;
