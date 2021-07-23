@@ -8,6 +8,6 @@
 ## Contribution
 
 1. Fork the project  
-   `git clone https://github.com/<username>/DataStructures-Algorithms`
+   `git clone https://github.com/<username>/data-structure-algorithms`
 2. If you want to add any new question then you can create the source file in the respective topic, add a good explanation because while explaning you will understand the question more better.
 3. Create the PR.
