@@ -6,12 +6,17 @@ https://practice.geeksforgeeks.org/problems/steps-by-knight5927/1
 /* Approach: It's basically a normal BFS approach, and as we know that doing bfs gives us the minimum distance from source to destination.
 So, doing a normal bfs we can get the shortest distance to reach from source to destination */
 
+// Time Complexity: O(N*N) -> all grid or cell will be traversed once
 #include<bits/stdc++.h>
 using namespace std;
 
 class Solution {
   public:
+  // k => starting position of knight
+  // t => target position where we want to reach
+  // N => size of the grid
 	int minStepToReachTarget(vector<int>& k, vector<int>& t, int N) {
+     // since the input will be in 1 based indexing, we have made visited of size N+1
 	    vector<vector<bool>> visited(N+1, vector<bool> (N+1, false));
 	    queue<pair<int, int>> q;
 	    
@@ -21,6 +26,7 @@ class Solution {
 	    
 	    while(!q.empty()) {
 	        int size = q.size();
+          
 	        while(size--) {
 	            int r = q.front().first, c = q.front().second;
 	            q.pop();
