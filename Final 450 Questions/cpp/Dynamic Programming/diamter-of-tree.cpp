@@ -1,3 +1,7 @@
+/* The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
+The length of a path between two nodes is represented by the number of edges between them. */
+/* Basically, on observing the longest path will be between any two leaf nodes only bcoz we want to considered longest path */
+
 /* Below solution is done with taking the reference of dp on trees general syntax but this question can be done in more simple way  */
 int solve(TreeNode *root, int &res) {
         /* Base Condition */
@@ -14,7 +18,7 @@ int solve(TreeNode *root, int &res) {
             ans => if current node is considered as the root of the path then the length of the diameter will be sum of height of left sub tree and right sub tree
         */
         
-        /* 1 is added for the edge which is connection the left or the right sub tree with the current node
+        /* 1 is added for the edge which is connecting the left or the right sub tree with the current node
         Note that we used to add another base condition like if(!root->left && !root->right) return 0; if the measurement is done based on the edge and not on the
         node. But here it is not working because in that case we treat the null value and the leaf node at the same height. */
         int temp = max(left, right) + 1;  // height of the current node
@@ -37,7 +41,7 @@ int solve(TreeNode *root, int &res) {
     
 int solve2(TreeNode *root, int &res) {
         if(root == null)
-                return 0;
+            return 0;
         
         int leftHeight = solve2(root->left, res);
         int rightHeight = solve2(root->right, res);
@@ -45,16 +49,16 @@ int solve2(TreeNode *root, int &res) {
         /* If we see closely, we are basically finding the daimeter(longest path) at each node and keep tracking of the maximum diamter obtained so far. 
            We are returning the Height of the tree so far because we are keeping track of the height of the tree simultanously, rather than finding it again and again.
            
-           What I mean is: Think of the brute force approach...for each node we will find the height of the left sub tree and height of the right sub tree and then find
-           the diameter at that node by adding both of them...so for each node we have to perform getHeight() function which is O(n) so total time complexity
-           would rise to O(n^2). So, to avoid to recurring calculation of the height at each node we are keeping track of the height of the current node by returning it.
+           What I mean is: Think of the brute force approach...for each node we will find the height of the left sub tree and height of the right sub tree and then find the diameter passing through the node by adding both of them + 1(for current node)...so for each node we have to perform getHeight() function to get the height of left and right subtree which is O(n) so total time complexity would rise to O(n^2). So, to avoid these recurring calculation of the height at each node we are keeping track of the height of the current node by returning it.
            
            and the above dp solution is another way of writing the code, wherein we are finding a temporary solution which other ancestor will use to find the answer
            and a answer using the current node...so answer will be use to keep track of the global or main final answer i.e. keeping track of the maximum diamter
            obtained so far and returning the temporary solution (which is height of the node here) so that other nodes can use it.
         */
         
+        /* Find the answer which is maximum, the previous one or the current on */
         res = max(res, leftHeight + rightHeight);
+        // res = max(res, leftHeight + rightHeight + 1);  => if node is considered rather than edges
         
         return max(left, right) + 1; // returning the height
 }
