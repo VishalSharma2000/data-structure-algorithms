@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/* Wrong Answer  */
 int LCSubstringRec(string s1, string s2, int n, int m, int res) {
   if(n == 0 || m == 0) return res;
 
@@ -30,11 +31,11 @@ int LCSubstringDP(string s1, string s2, int n, int m) {
   return maxLen;
 } 
 
-int longestCommonSubstringRecursion(string s1, string s2, int i, int j, int maxLen) {
-  if(i == 0 || j == 0) return maxLen;
+int longestCommonSubstringRecursion(string s1, string s2, int i, int j, int count) {
+  if(i == 0 || j == 0) return count;
 
   if(s1[i] == s2[j]) {
-    count = longestCommonSubstringRecursion(s1, s2, i-1, j-1, maxLen+1);
+    count = longestCommonSubstringRecursion(s1, s2, i-1, j-1, count+1);
   }
 
   count = max(count, max(longestCommonSubstringRecursion(s1, s2, i-1, j, 0), longestCommonSubstringRecursion(s1, s2, i, j-1, 0)));
@@ -49,4 +50,5 @@ int main() {
   int res = 0;
   cout << LCSubstringRec(s1, s2, s1.length(), s2.length(), res) << endl;
    cout << LCSubstringDP(s1, s2, s1.length(), s2.length()) << endl;
+   cout << longestCommonSubstringRecursion(s1, s2, s1.length(), s2.length(), 0) << endl;
 }
