@@ -7,6 +7,9 @@
 time complexity will O(N). We say that randomized quick select works better than normal quick select because the probability of getting
 a number from 0 to 9 is same to there is more chance that the array will be divided into two halves */
 
+/* Worst Case Linear Time */
+/* https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array-set-3-worst-case-linear-time/ */
+
 /* Time Complexity: O(N) for average cases and O(N^2) for worst cases */
 
 int partition(vector<int> &arr, int l, int h) {
