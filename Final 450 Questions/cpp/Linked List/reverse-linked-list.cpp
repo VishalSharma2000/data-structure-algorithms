@@ -26,10 +26,20 @@ class LinkedList {
 
             // dividing linked list into two parts - first node and rest part
             Node *rest = reverseUtil(head->next);
-            /* When the above recursive function ends for first time, then we will be at the second last node of the of the linked list 
-            Basically, we are reversing the linked list from last...
+            /* 
+                The main recursive thing is happening here
+                since we are just working with adjacent node so here we are basically updating the next pointer of the next node
+                to the curr node
             */
             head->next->next = head;
+            /* 
+            ListNode *nextNode = head->next
+            ListNode *currNode = head;
+
+            nextNode->next = currNode;
+            currNode->next = NULL; // bcoz this node is now the end of the reversed linked list
+            */
+
             head->next = NULL;
 
             return rest;
