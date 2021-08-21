@@ -41,3 +41,45 @@ vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
     
     return ans;
 }
+
+/* A more concise way to write the above code using pointer */
+/* Rather than handling two stack together, here the idea is to keep one stack to only push the elements and other to only pop the elements. 
+So, pointer ps1  */
+class Solution {
+public:
+    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
+        if(!root) return {};
+        
+        vector<vector<int>> ans;
+        stack<TreeNode*> s1, s2, *ps1, *ps2;
+        
+        ps1 = &s1;
+        ps2 = &s2;
+        
+        bool ltr = true;
+        ps1->push(root);
+    
+        while(!ps1->empty()) {
+            ans.push_back({});
+            while(!ps1->empty()) {
+                TreeNode *curr = ps1->top();
+                ps1->pop();
+            
+                ans.back().push_back(curr->val);
+                
+                if(ltr) {
+                    if(curr->left) ps2->push(curr->left);
+                    if(curr->right) ps2->push(curr->right);
+                } else {
+                    if(curr->right) ps2->push(curr->right);
+                    if(curr->left) ps2->push(curr->left);
+                }
+            }
+            
+            ltr = !ltr;
+            swap(ps1, ps2);
+        }
+        
+        return ans;
+    }
+};
