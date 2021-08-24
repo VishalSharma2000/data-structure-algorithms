@@ -1,6 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/* To do so, permute takes the index of the current element currentindex(i) as one of the arguments. Then, it swaps the current element with every other element in the array, lying towards its right, so as to generate a new ordering of the array elements. After the swapping has been done, it makes another call to permute but this time with the index of the next element in the array. While returning back, we reverse the swapping done in the current function call.
+
+Thus, when we reach the end of the array, a new ordering of the array's elements is generated. */
+
+/* TC: O(N! => to find all permutation), O(N! *N) => to print all permutation */
 void findAllPermutations(vector<int> &nums, int l, int h, vector<vector<int> > &ans) {
     if(l == h) 
         ans.push_back(nums);
