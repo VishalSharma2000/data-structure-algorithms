@@ -1,0 +1,1 @@
+/* Given either a string or array of numbers, find all the subsets using bit manipulation - This method is called Power Set Algorithm */
