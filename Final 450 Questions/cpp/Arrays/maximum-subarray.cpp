@@ -5,6 +5,7 @@ or if array has mixed numbers then kadane's algorithm is used here */
 
 /* It's basically a DP problem where we have to find the maximum sum subarray. 
 State of subproblem dp[i] => maximum sum till index i */
+// https://leetcode.com/problems/maximum-subarray/discuss/20193/DP-solution-and-some-thoughts
 class Solution {
 public:
   int maxSum(vector<int> &nums) {
