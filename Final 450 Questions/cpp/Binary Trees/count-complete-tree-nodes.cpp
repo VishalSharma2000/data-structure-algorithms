@@ -14,6 +14,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+ // TC: (logn * logn)
 class Solution {
 public:
     int countNodes(TreeNode* root) {
@@ -63,6 +64,8 @@ public:
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+// TC: (logn * logn)
 class Solution {
 public:
     int countNodesAtLastLevel(TreeNode *root, int height) {
