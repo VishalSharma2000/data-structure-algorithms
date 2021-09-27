@@ -20,23 +20,35 @@ otherwise pop the top element and call recursively for insertValue and then push
 using namespace std;
 
 void insertSorted(stack<int> &in, int temp) {
+  // base condition
   if(in.empty() || (in.top() < temp)) {
     in.push(temp);
     return;
   }
 
+  // induction
   int val = in.top();
   in.pop();
+  
+  // hypothesis
   insertSorted(in, temp);
+
+  // induction
   in.push(val);
 }
 
 void sortStack(stack<int> &in) {
+  // base condition
   if(in.empty()) return;
 
+  // induction
   int temp = in.top();
   in.pop();
+
+  // hypothesis
   sortStack(in);
+
+  // induction
   insertSorted(in, temp);
 }
 
