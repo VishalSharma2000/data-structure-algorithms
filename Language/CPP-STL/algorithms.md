@@ -15,3 +15,32 @@ vector<int> vec{1,4,1,6,7,2,4,9,0};
 | sum(startIterator, endIterator, val)                         | Find the sum of array elements from startIterator to endIterator-1 with val as the starting value          |
 | next_permutation(startIterator, endIterator) <br /> TC: O(N) | Find the next lexiographical permutation <br /> Returns true if the next permutation exist otherwise false |
 | prev_permutation(startIterator, endIterator) <br /> TC: O(N) | Find the prev lexiographical permutation <br /> Returns true if the prev permutation exist otherwise false |
+
+## Left and Right rotation
+    rotate(startIterator, middleIterator, endIterator);
+    
+- startIterator and endIterator indicate the range of the array where rotation needs to be performed.
+- middleIterator is the iterator which should be between startIterator and endIterator and should be pointing to the element which you want to become the first element after rotation in the given range 
+
+ ### Left rotation
+- All the iterators should be forward Iterator
+
+ ### Right Rotation
+- All the iterators should be backward Iterator
+
+## Examples
+```
+  vector<int> arr{1, 2, 3, 4, 5, 6, 7};
+  auto it = arr.begin();
+
+  // Left shift from index [1, 5) by 2
+  rotate(arr.begin() + 1, arr.begin() + 3, arr.end() - 2);
+  /*
+    arr.begin() => points to first element
+    arr.end() => points to just next to last element
+    arr.begin() + 3 => points to 4 
+  */
+
+  for(auto it=arr.begin(); it!=arr.end(); it++) cout << *it << " ";
+  // 1 4 5 2 3 6 7 
+```
