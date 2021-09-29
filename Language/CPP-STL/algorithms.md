@@ -36,11 +36,17 @@ vector<int> vec{1,4,1,6,7,2,4,9,0};
   // Left shift from index [1, 5) by 2
   rotate(arr.begin() + 1, arr.begin() + 3, arr.end() - 2);
   /*
-    arr.begin() => points to first element
-    arr.end() => points to just next to last element
+    arr.begin() => points to element at index 1
+    arr.end() => points to elemnt at index 5
     arr.begin() + 3 => points to 4 
   */
 
   for(auto it=arr.begin(); it!=arr.end(); it++) cout << *it << " ";
-  // 1 4 5 2 3 6 7 
+  // 1 4 5 2 3 6 7
+
+  // Right shift complete array by 5 (so that 2 is at last position)
+  rotate(arr.rbegin(), arr.rend()-2, arr.rend()); 
+
+  for(auto it=arr.begin(); it!=arr.end(); it++) cout << *it << " ";
+  //3 4 5 6 7 1 2
 ```
