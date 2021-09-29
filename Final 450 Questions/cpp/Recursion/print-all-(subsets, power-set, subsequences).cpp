@@ -1,3 +1,6 @@
+/* If the original string contains duplicate values then we may have duplicates subsets in final answer. So in that case rather than storing the subsets in a vector we should use a map to store the subsets. So, in map the subset strings will be lexiographically sorted and will contain only unique subset */
+/* Time Complexity: O(2^n) bcoz we have two decisions to make on each element of the array or string. */
+/* TC: (2^n)*(log(2^n)) if we want the subsets to be in lexiographical order */
 #include <bits/stdc++.h>
 using namespace std;
 vector<vector<int>> allSubsets;
@@ -67,3 +70,7 @@ int main() {
 
   return 0;
 }
+
+/* Substring => continuous stream of elements
+   Subsequence => elements in the original string not necessary continuous but should be inorder
+   Subset => we just subsequence but in any order */
