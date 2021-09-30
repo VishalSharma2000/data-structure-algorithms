@@ -6,20 +6,27 @@ We will continue this iteration until only one person is left on the circular ta
 #include <iostream>
 using namespace std;
 
-int josephus(int n, int k) {
-  if (n == 1) return 1;
+int safePosHelper(vector<int> &p, int k, int index) {
+  int n = p.size();
+  if(n == 1) return p[0];
+  
+  int nextP = (index + k)%n;
+  
+  p.erase(p.begin() + nextP);
+  
+  return safePosHelper(p, k, nextP);
+}
 
-  int killedPerson = josephus(n-1, k);
-  // will return the index, according to n-1 person, so for using it in the case where n people are alive, we should adjust the index
-
-  int actualIndex = (killedPerson + k-1) % n + 1;
-
-  return actualIndex;
+int safePos(int n, int k) {
+  vector<int> p(n);
+  for(int i=0; i<n; i++) p[i] = i+1;
+  
+  return safePosHelper(p, k-1, 0);
 }
 
 int main() {
   int n,k;
   cin >> n >> k;
 
-  cout << josephus(n, k) << endl;
+  cout << safePos(n, k) << endl;
 }
