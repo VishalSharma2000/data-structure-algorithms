@@ -15,10 +15,12 @@ and base condition => when stack is empty of the top element is less than the te
 
 otherwise pop the top element and call recursively for insertValue and then push the poped value
 */
+/* T(N) = T(N-1) + O(N) (extra cost to put the pop element into correct position) */
 
 #include <bits/stdc++.h>
 using namespace std;
 
+/* hypo => Insert the element temp into the sorted stack */
 void insertSorted(stack<int> &in, int temp) {
   // base condition
   if(in.empty() || (in.top() < temp)) {
@@ -37,6 +39,7 @@ void insertSorted(stack<int> &in, int temp) {
   in.push(val);
 }
 
+/* Hypo => Sort the given stack */
 void sortStack(stack<int> &in) {
   // base condition
   if(in.empty()) return;

@@ -1,9 +1,14 @@
+/* Here we are basically creating two recursive functions with different hypo
+1 says that given stack and size, it will delete middle element of stack
+other says that given stack and position from top delete the element at given position */
 #include <iostream>
 #include <stack>
 using namespace std;
 
-void deleteMiddleElement(stack<int> &s, int n) {
+/* Hypo => given a stack and a position of element from top, we need to delete the element at that position */
+void deleteMiddleElementUtil(stack<int> &s, int n) {
   if(s.empty()) return;
+  // when we reached at required position
   if(n == 1) {
     s.pop();
     return;
@@ -12,7 +17,7 @@ void deleteMiddleElement(stack<int> &s, int n) {
   int val = s.top();
   s.pop();
 
-  deleteMiddleElement(s, n-1);
+  deleteMiddleElementUtil(s, n-1);
 
   s.push(val);
 }
@@ -24,6 +29,11 @@ void printStack(stack<int> &s) {
   s.pop();
 
   printStack(s);
+}
+
+/* Hypo => given a stack and it's size, delete the middle element of the stack */
+void deleteMiddleElement(stack<int> s, int n) {
+  deleteMiddleElementUtil(s, (n+1)/2);
 }
 
 int main() {

@@ -3,7 +3,7 @@ Reverse stack using recursion and with basic operation of stack (push, pop, empt
 
 Time complexity: O(n^2)
 For each value of n, we will insert that value at the bottom of the stack...
-for insertion at bottom worst case time complexity is O(n) and we have n elements
+for insertion at bottom time complexity is O(n) and we have n elements
 so therefore, O(n^2)
 */
 
