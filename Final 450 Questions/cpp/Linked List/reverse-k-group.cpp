@@ -91,36 +91,39 @@ ListNode* reverseK(ListNode *head, int len, int k) {
     return prev;
 }
 
-// Iterative approach
-ListNode* reverseKGroup(ListNode* head, int k) {
-        int len = 0;
-        for(ListNode *i=head; i!=NULL; len++, i=i->next);
-        
-        ListNode *dym = new ListNode(0);
-        dym->next = head;
-
-        ListNode *prev = dym;
-        ListNode *tail = head;
-
-        for(int i=len; i-k>=0; i-=k) {
-            for(int j=1; j<k; j++) {
-                ListNode *next = tail->next->next;
-                tail->next->next = prev->next;
-                prev->next = tail->next;
-                tail->next = next;
-            }
-            
-            prev = tail;
-            tail = tail->next;
-        }
-        
-        return dym->next;
-    }
-
 ListNode* reverseKGroup(ListNode* head, int k) {
     // Finding the length of the linked list
     int len = 0;
     for(ListNode* i=head; i!=NULL;len++, i=i->next);
     
     return reverseK(head, len, k);
+}
+
+// Iterative approach
+ListNode* reverseKGroup(ListNode* head, int k) {
+  int len = 0;
+  for(ListNode *i=head; i!=NULL; len++, i=i->next);
+  
+  /* check your notes */
+  ListNode *dummy = new ListNode(0);
+  ListNode *prevEnd = dummy;
+  ListNode *start = head, *end = head, *prev = NULL;
+  
+  for(int i=len; i-k>=0; i-=k) {   
+      for(int j=0; j<k; j++) {
+          ListNode *nextNode = end->next;
+          end->next = prev;
+          prev = end;
+          end = nextNode;
+      }
+      
+      prevEnd->next = prev;
+      prevEnd = start;
+      
+      start = end;
+      prev = NULL;
+  }
+  prevEnd->next = end;
+  
+  return dummy->next;
 }
