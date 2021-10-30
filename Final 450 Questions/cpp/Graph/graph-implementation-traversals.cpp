@@ -37,10 +37,10 @@ class Graph {
         }
     }
     
+    /* Breadth First Search Traversal => TC: O(E+V), SC: O(E) */
     void BFS(int src) {
-        list<int> queue; // queue implementation using doubly linked list
-        // visited array to keep track of which vertices is visited 
-        bool *visited = new bool[V];
+        list<int> queue;                    // queue implementation using doubly linked list
+        bool *visited = new bool[V];        // visited array to keep track of which vertices is visited 
         for(int i=0; i<V; i++) visited[i] = false;
         
         // visiting the src node
@@ -52,12 +52,10 @@ class Graph {
             queue.pop_front();
             cout << currNode << " ";
             
-            // visit all the neigbours of the currNode which are not visited.
-            // If the vertices is not visited then push it into queue, to iteratively
-            // again visit the neighbours of that node and so on...
+            /* visit all the unvisited neigbours of the currentNode and also push it into the queue */
             for(auto u : adj[currNode]) {
                 if(!visited[u]) {
-                    visited[u] = true;
+                    visited[u] = true;      // mark as visited
                     queue.push_back(u);
                 }
             }
