@@ -1,15 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/* One small difference in bfs and dfs is...when we do dfs we make the node visited when we reach at that node but in
-bfs we make the node x visited when we are at its adjacent node */
 /* 
-    Adjacency List => O(N + 2*E)
-    1 -> lists of adjacent
-    2 -> lists of adjacent
+Adjacency List contains data about all the neighbours of all the vertices 
+1 -> { list of all neighbouring nodes }
+2 -> { list of all neighbouring nodes }
+and so on
 
-    when we do sum of all list of adjacenet => 2 * E
- */
+Space for adjacency list => O(V + 2*E)
+V => for all the vertices
+2*E = 2*(V^2) => in worst case when the graph is complete then each vertex will have V-1 neighbours and in adjaceny list each edge will be repeated twice. 
+
+eg:
+1 -> 2, 3, 4
+2 -> 1, 3
+3 -> 1, 2
+4 -> 1
+
+above is the adjacency list of undirected graph.
+*/
 
 class Graph {
   public:
@@ -23,6 +32,7 @@ class Graph {
     
     void addEdge(int src, int dest) {
         adj[src].push_back(dest);
+        
         // if the graph is undirecteed
         adj[dest].push_back(src);
     }
@@ -63,6 +73,7 @@ class Graph {
         }
     }
     
+    /* Depth First Search Traversal - TC:O(E + V), SC: O(V) */
     void DFSUtil(int node, bool visited[]) {
         // mart the current node as visited
         visited[node] = true;
