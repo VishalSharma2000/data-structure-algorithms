@@ -1,5 +1,5 @@
 /* Disjoint Set Data Structure Implementation Using Array.
-Following operations can be performed on the elemnets of this ds;
+Following operations can be performed on the elements of this data structure;
 
 1) Union (x, y)
     -> Merge the set containing x and the set containing y, and the representative of
@@ -47,8 +47,10 @@ class DisjointSet {
             no need to perform union, hence return */
             
             if(rank[x] > rank[y]) {
-                /* connect the set whose rank is less to the set whose rank is more...bcoz
-                if we do so then the overall rank of the resulting set will be less */
+                /* 
+				connect the lesser rank set to the higher rank set...bcoz
+                if we do so then the overall rank of the resulting set not be changed 
+				*/
                 
                 parent[parentY] = parentX;
             } else if(rank[x] < rank[y]) {
