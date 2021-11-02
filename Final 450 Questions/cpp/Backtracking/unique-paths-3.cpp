@@ -13,6 +13,13 @@ and since we want to find all the paths, so when we are done with exploring all 
 
 Note: we are making a cell visited by changing it's value to 3 but we can also change it to -1. It's more better way to do but just to show the signifance of visited array in place we are using value 3.
 */
+
+/* TC: O(3m * n). 
+At every cell (except the start cell), we can continue the path exploration in 3 direction (after excuding previous visited cell) and there can be O(m*n) cells in total to be visited. In reality, the number of recursions required is much less due to dead-ends. 
+O(m*n) required for implicit recursive stack in dfs. 
+
+Revision source: https://leetcode.com/problems/unique-paths-iii/discuss/1554054/C%2B%2B-DFS-%2B-Backtracking-%2B-Bit-Manipulation-or-Short-and-Simple-w-Explanation-or-Beats-100
+*/
 class Solution {
 public:
     int getPaths(vector<vector<int>> &grid, int i, int j, int validCells) {
