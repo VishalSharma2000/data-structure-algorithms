@@ -12,8 +12,7 @@
 using namespace std;
 
 int findLCSLen(string s1, string s2, int n, int m) {
-  // normal lcs fuctoin
-  return 1;
+  // normal lcs function
 }
 
 
@@ -23,5 +22,8 @@ int main() {
 
   int lcsLen = findLCSLen(s1, s2, s1.length(), s2.length());
 
-  cout << (s1.length() - lcsLen) + (s2.length() - lcsLen) << endl;
+  int deletionFromStringA = s1.length() - lcsLen;
+  int insertionInStringA = s2.length() - lcsLen;
+
+  cout << deletionFromStringA + insertionInStringA << endl;
 }

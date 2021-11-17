@@ -1,3 +1,7 @@
+/* Given two strings, we have to find the shortest common supersequence
+eg: s1 = "geek" s2="eke" then shortest common supersequence = geeke */
+
+/* So, the basic idea is to consider those elements which are same in both the string only once. So, basically we have to find the longest common supersequence to get that string. Now other characters in both the strings should be added manually in the final string. So, shortest common supersequence length will be (m + n) - lcs */
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -21,16 +25,13 @@ int lenSCS(string s1, string s2, int n, int m) {
   int len = LCS(s1, s2, n, m);
 
   /* Which all characters are common in both string, for finding the shortest supersequence we should write those
-  characters only once. And also one thinking is that we should arrange the all characters in such an order that the length
-  decreases...so note that those set of characters for which proper ordering will result into less supersequence length
-  is the Longest common subsequence. 
+  characters only once. */
   
-  So, in the final string we should write the longest common supersequence only once.  */
-
   return (m + n) - (len);
 } 
 
-void printSSS(string s1, string s2, int n, int m) {
+/* Print shortest common supersequence */
+void printShortestCommonSupersequence(string s1, string s2, int n, int m) {
   /* Print Shortest Super Sequence */
   int dp[n+1][m+1];
 
@@ -60,8 +61,6 @@ void printSSS(string s1, string s2, int n, int m) {
         j--;
       }
     }
-
-    cout << s << endl;
   }
 
   while(i > 0) {
@@ -85,5 +84,5 @@ int main() {
   cin >> s1 >> s2;
 
   cout << lenSCS(s1, s2, s1.length(), s2.length()) << endl;
-  printSSS(s1, s2, s1.length(), s2.length());
+  printShortestCommonSupersequence(s1, s2, s1.length(), s2.length());
 }

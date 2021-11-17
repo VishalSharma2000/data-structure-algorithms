@@ -1,3 +1,4 @@
+/* The basic idea is to find the existing longest palindromic subsequence in the string. Once finding that, now we just need to add those characters at correct position which were not present in the longest palindromic subsequence. */
 #include <bits/stdc++.h>
 using namespace std;
 

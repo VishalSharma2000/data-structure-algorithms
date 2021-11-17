@@ -2,6 +2,10 @@
   Given a string, we have to find longest palindromic subsequence in the string. 
 
   So, we have to find the string which if read from both side make the same word. 
+
+  In lcs type problems, if we are provided with only one string then we should think of some operation in the same string such that it behaves as two different strings.
+
+  So, if we notice properly we have to find the lcs between the reversed string and original string
   So, we have to find lcs(s, reverse(s))
 */
 

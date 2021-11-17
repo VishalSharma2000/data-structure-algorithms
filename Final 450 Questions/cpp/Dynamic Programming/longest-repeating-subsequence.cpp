@@ -1,6 +1,8 @@
 /*
   Given a string we have to find the longest repeating subsequence such that the repeating subsequence should
   have different positions.
+
+  Here also we have only one string to work on. So, to find the longest repeating subsequence we will try to compare each character with other characters such that they are not at the same position
 */
 
 #include <bits/stdc++.h>

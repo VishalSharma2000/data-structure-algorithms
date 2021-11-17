@@ -34,6 +34,7 @@ string LCS(string s1, string s2, int n, int m) {
 }
 
 string LCSOptimized(string s1, string s2, int n, int m) {
+  /* Normal Longest Common Subsequence */
   int dp[n+1][m+1];
 
   for(int i=0; i<n+1; i++) dp[i][0] = 0;
@@ -48,6 +49,14 @@ string LCSOptimized(string s1, string s2, int n, int m) {
     }
   }
 
+  for(int i=0; i<n+1; i++) {
+    for(int j=0; j<m+1; j++) {
+      cout << dp[i][j] << " ";
+    }
+    cout << endl;
+  }
+
+  /* Print - LCS Logic */
   int i = n, j = m;
   string lcs = "";
   while(i > 0 && j > 0) {
@@ -71,6 +80,6 @@ int main() {
   string s1, s2;
   cin >> s1 >> s2;
 
-  cout << LCS(s1, s2, s1.length(), s2.length()) << endl;
+  // cout << LCS(s1, s2, s1.length(), s2.length()) << endl;
   cout << LCSOptimized(s1, s2, s1.length(), s2.length()) << endl;
 }
