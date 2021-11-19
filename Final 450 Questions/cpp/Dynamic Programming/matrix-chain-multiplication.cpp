@@ -2,10 +2,9 @@
   Given an array containing the size of the matrices, we have to find the minimum cost to multiply 
   all the matrices i.e. basically we have to add brackets between matrices and hence 
   find which matrices should we multiple first and which all after that...means the order in which the matrices should be multiplied
-
-
+  to get the minimum cost
 */
-
+// TC: O(n^3)
 #include <bits/stdc++.h>
 using namespace std;
 
