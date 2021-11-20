@@ -37,9 +37,6 @@ bool isScramble(string s1, string s2) {
   /* As per the defination, either of the strings should not be empty */
   if(s1.compare(s2) == 0) return true;
   /* If both the strings are same, then also they are scrambled */
-  if(len1 == 1) return false;
-  /* We have already checked that the string is of equal length, and none of them is empty, and even they are not equal
-     so if they are of length one then no definately they are not equal  */
 
   for(int i=1; i<len1; i++) {
     /* If swapping wouldn't have happened */
