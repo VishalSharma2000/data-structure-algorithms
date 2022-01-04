@@ -55,3 +55,29 @@ public:
 	}
 
 };
+
+/* TC: O(m+n) */
+class Solution{
+public:
+	int rowWithMax1s(vector<vector<int> > arr, int n, int m) {
+	    int i = 0, j = m-1;
+	    int maxRow = -1;
+	    int maxOne = 0;
+	    
+	    while(i<n && j>=0) {
+	        if(arr[i][j] == 1) {
+	            if(m-j > maxOne) {
+	                maxRow = i;
+	                maxOne = m-j;
+	            }
+	            
+	            j--;
+	        } else {
+	            i++;
+	        }
+	    }
+	    
+	    return maxRow;
+	}
+
+};

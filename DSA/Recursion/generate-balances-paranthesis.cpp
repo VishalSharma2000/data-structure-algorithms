@@ -2,6 +2,8 @@
 #include <string>
 using namespace std;
 
+/* Time Complexity: O(branches ^ depth) = O(2^(2n)) */
+
 void generateBalancedParanthesis(int open, int close, string ou) {
   if(open == 0 && close == 0) {
     cout << ou << endl;

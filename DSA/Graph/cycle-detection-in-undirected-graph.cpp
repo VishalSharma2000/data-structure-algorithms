@@ -1,3 +1,5 @@
+#include <bits/stdc++.h>
+using namespace std;
 /* Detect cycle using DFS and BFS */
 /* It's normal DFS or BFS traversal, just that we have to see that if the already visited node is repeated. If
 the already visited node is repeated then there is cycle in graph otherwise no cycle */
@@ -12,7 +14,7 @@ bool DFSUtil(vector<int> adj[], int node, int prevNode, vector<bool> &visited) {
     if(!visited[u]) {
       /* If the adjancent node is not visited then again call for cycle detection */
       if(DFSUtil(adj, u, node, visited)) return true;
-    } else if(u != parent) return true;
+    } else if(u != prevNode) return true;
     /* If the adjacent node is already visited and its not equal to previously visited node then definately it was 
     visited by some node in past. This shows that cycle exist */
   }
@@ -55,7 +57,7 @@ bool checkCycleUsingDFS(vector<int> adj[], int V) {
   /* Here we are assuming that the graph may be connected or not connected. So to handle the case where graph may not 
   be connected we are using a for loop otherwise we would have directly started bfs or dfs from any node */
   /* 1-based Indexing */
-  for(int i=1; i<=n; i++) {
+  for(int i=1; i<=V; i++) {
     if(!visited[i]) {
       /* We need a extra argument to keep track of the previous node traversed otherwise the previous node will always be visited.
       So to differentiate between previously visited node and other nodes we are keeping track of the previously visited node */

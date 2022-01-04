@@ -50,3 +50,6 @@ vector<int> vec{1,4,1,6,7,2,4,9,0};
   for(auto it=arr.begin(); it!=arr.end(); it++) cout << *it << " ";
   //3 4 5 6 7 1 2
 ```
+### Similar other functions
+1. rotate_copy => just have one last paramter for destination where the rotation will be copied
+  dest => can be vector, ostream, etc

@@ -1,6 +1,6 @@
 /*
   We will try to keep all the queens column by column starting from 0 to N-1, 
-  For every col, we will travers over all rows and find a row where placing the queen won't create a clash...
+  For every col, we will traverse over all rows and find a row where placing the queen won't create a clash...
   If no such row exist, then we will backtrack and try to keep the previous queen at some other position and try again.
 
   Time complexity: O(n ^ (n * n))

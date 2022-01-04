@@ -6,7 +6,8 @@
 *.lo
 *.o
 *.obj
-.vscode
+*.out
+~/codeforces/*.o
 
 # Precompiled Headers
 *.gch

@@ -1,11 +1,12 @@
 /* 
   Graph is bipartite or not can be checked with the help of both the traversal. 
   BFS and DFS
-  A graph is called bipartite only if it can be colored using exactly two colors. 
+  A graph is called bipartite only if it can be colored using exactly two colors.
+
+  So, in two color method we try to give different colors to adjacent nodes, so if node u is given red color then we will give blue color to all the adjacent node of u. 
 
   If graph does not have any cycle then the graph is bipartite graph
-  If the graph has a cycle then the graph with even length cycle will be bipartitite and the graph
-  with odd length cycle will not be bipartite
+  If the graph has a cycle then the graph with even length cycle will be bipartitite(becuase it can be successfully colored with 2 colors) and the graph with odd length cycle will not be bipartite(because it cannot be successfully colored with 2 colors)
 */
 
 #include <bits/stdc++.h>
@@ -25,9 +26,12 @@ bool bipartiteBFS(vector<int> adj[], int node, vector<int> &color) {
     /* Do for all its adjacent */
     for(int v : adj[u]) {
       if(color[v] == -1) {
+        // if not colored then give alternate colour
         color[v] = 1 - color[u];
         q.push(v);
-      } else if(color[v] == color[u]) return false;
+      } else if(color[v] == color[u]) 
+        // if already colored then if the existing color is same as the adjacent node then graph is not bipartite
+        return false;
     }
   }
 
