@@ -15,7 +15,8 @@ So, on observation
 So, we can make use of the above direction matrix to add the correspoding x and y values in the current position and also to identify the final direction the robot is facing.
 
 So, the key point is.... **Since we are simulating the same string infinite number of times, robot will be contrainted in the same area only when it keeps on rotating the same circular path i.e. after some k simulations of the string the robot should definitely come back to it's original position i.e. (0, 0).**
-**_So the conclusion comes out that - after one simulation the direction of the robot should be changed or if the direction does not change, then the robot should be at (0, 0), i.e. it did not move from it's starting point or again came back to it's starting point after one simulation._**
+
+<span style="color: red">**_So the conclusion comes out that - after one simulation the direction of the robot should be changed or if the direction does not change, then the robot should be at (0, 0), i.e. it did not move from it's starting point or again came back to it's starting point after one simulation._**<span>
 
 ```
 class Solution {
