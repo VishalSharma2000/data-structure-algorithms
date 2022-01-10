@@ -49,3 +49,52 @@ public:
 };
 ```
 
+### A more better way of handling directions
+----------
+```
+class Solution {
+public:
+    bool isRobotBounded(string ins) {
+        vector<vector<int>> directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+                
+        int dir = 0;
+        int x = 0, y = 0;
+        for(int i=0; i<ins.size(); i++) {
+            if(ins[i] == 'G') {
+                x += directions[dir][0];
+                y += directions[dir][1];
+            } else {
+                dir = ins[i] == 'L' ? (dir - 1 + 4)%4 : (dir +1)%4;
+            }
+        }
+        
+        return (dir != 0) || (x == 0 && y == 0);
+    }
+};
+```
+
+### How is the directions working?
+```
+i = (i+1) % 4 will turn right
+i = (i+3) % 4 will turn left
+```
+
+It's actually like this, we store the directions in an array like this
+
+`vector<vector<int>> directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}}` 
+
+It is basically `['N', 'E', 'S', 'W']` all the directions in clockwise directions.
+
+Now the initial direction is North i.e. 0, let's save this in the variable i
+so initially `i = 0`
+
+Now, when the robot turns left i.e. we are moving in an anticlockwise direction, our next direction will be west. Since we are storing the directions in a clockwise manner we need to decrement the i value by 1, but the catch is while decrementing i can become negative. 
+
+For eg: `i = 0 and then we turn left so i = i - 1 which gives i = -1, turning left when we are facing north results into west direction so to maintain the indexing we do the addition of 4.`
+
+So, final expression becomes `i = (i-1 + 4)%4 = (i+3)%4`
+
+The same thing happens when we turn right, turning right is clockwise so we do increment by 1
+ `i = (i+1)%4` we do a modulo here because after 'W' we will again face 'N' again.
+
+I hope, it helped. :)
