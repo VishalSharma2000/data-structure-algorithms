@@ -7,7 +7,7 @@ the already visited node is repeated then there is cycle in graph otherwise no c
 /* Time Complexity: O(E + V), Space Complexity: O(V+E + V):(callstack + visitedarray) */
 
 /* DFS Method */
-bool DFSUtil(vector<int> adj[], int node, int prevNode, vector<bool> &visited) {
+bool DFSUtil(vector<vector<int>> adj, int node, int prevNode, vector<bool> &visited) {
   visited[node] = true;
 
   for(int u : adj[node]) {
@@ -25,7 +25,7 @@ bool DFSUtil(vector<int> adj[], int node, int prevNode, vector<bool> &visited) {
 /* Time Complexity: O(E + V), Space Complexity: O(V+E + V):(callstack + visitedarray) */
 
 /* BFS Method */
-bool BFSUtil(vector<int> adj[], int node, int prevNode, vector<bool> &visited) {
+bool BFSUtil(vector<vector<int>> adj, int node, int prevNode, vector<bool> &visited) {
   queue<pair<int, int>> q;
 
   /* Start with making the source node or starting node visited and push in queue */
@@ -43,7 +43,7 @@ bool BFSUtil(vector<int> adj[], int node, int prevNode, vector<bool> &visited) {
       if(!visited[v]) {
         visited[v] = true;
         q.push({v, u});
-      } else if(v == prevNode) continue;
+      } 
       else if(v != prevNode) return true;
     }
   }
@@ -51,17 +51,16 @@ bool BFSUtil(vector<int> adj[], int node, int prevNode, vector<bool> &visited) {
   return false;
 }
 
-bool checkCycleUsingDFS(vector<int> adj[], int V) {
-  vector<bool> visited(V+1, false);
+bool checkCycleUsingDFS(vector<vector<int>> adjList, int n) {
+  vector<bool> visited(n, false);
 
   /* Here we are assuming that the graph may be connected or not connected. So to handle the case where graph may not 
   be connected we are using a for loop otherwise we would have directly started bfs or dfs from any node */
-  /* 1-based Indexing */
-  for(int i=1; i<=V; i++) {
+  for(int i=0; i<n; i++) {
     if(!visited[i]) {
-      /* We need a extra argument to keep track of the previous node traversed otherwise the previous node will always be visited.
-      So to differentiate between previously visited node and other nodes we are keeping track of the previously visited node */
-      if(DFSUtil(adj, i, -1, visited)) return true;
+      /* We need a extra argument to keep track of the previous node (parent node) traversed to avoid wrong cycle detection.
+      So to differentiate between previously visited node and parent nodes we are keeping track of the parent node */
+      if(DFSUtil(adjList, i, -1, visited)) return true;
     }
   }
 
